@@ -9,61 +9,30 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Twitter Demo/LoginViewController.swift"
-            timestampString = "509730454.637411"
+            filePath = "Twitter Demo/TwitterClient.swift"
+            timestampString = "509745628.787347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "onLoginButton(_:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "TwitterClient"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Twitter Demo/TwitterClient.swift"
+            timestampString = "509745539.612353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "handleOpenUrl(url:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Twitter_Demo.LoginViewController.onLoginButton (Any) -&gt; ()"
-                  moduleName = "Twitter Demo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sudheeshbhattarai/Desktop/Twitter%20Demo/Twitter%20Demo/LoginViewController.swift"
-                  timestampString = "509725796.063369"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "1549">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Twitter_Demo.LoginViewController.(onLoginButton (Any) -&gt; ()).(closure #1)"
-                  moduleName = "Twitter Demo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sudheeshbhattarai/Desktop/Twitter%20Demo/Twitter%20Demo/LoginViewController.swift"
-                  timestampString = "509725796.065769"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "163">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Twitter_Demo.LoginViewController.(onLoginButton (Any) -&gt; ()).(closure #2)"
-                  moduleName = "Twitter Demo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sudheeshbhattarai/Desktop/Twitter%20Demo/Twitter%20Demo/LoginViewController.swift"
-                  timestampString = "509725796.06703"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "19">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
