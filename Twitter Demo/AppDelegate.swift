@@ -7,11 +7,49 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print(url.description)
+        let requesToken = BDBOAuth1Credential(queryString: url.query)
+        let twitterClient = BDBOAuth1SessionManager(baseURL: NSURL(string: "https://api.twitter.com")! as URL!, consumerKey: "xWZCWjpp7OMBCN5A5GdpB4tFY", consumerSecret: "e365Yb1G8brF12GJO76F6nvA9NiLLeaN3PrQUImm2LmmlgXrW7")
+
+        
+        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requesToken, success: {
+            (requestToken: BDBOAuth1Credential?) -> Void in
+            print("I got the access token")
+            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil,progress: nil, success: {(task: URLSessionDataTask, response: Any?) -> Void in
+                print("account: \(response)")
+                let user = response as? NSDictionary
+                print("name: \(user?["name"])")
+            }, failure: {( task: URLSessionDataTask?, error: Error) -> Void in
+                
+            })
+            
+            
+            twitterClient?.get("1.1/statuses/home_timeline.json", parameters: nil,progress: nil, success: { (task: URLSessionDataTask, response: Any?) -> Void in
+                let tweets = response as! [NSDictionary]
+                print("Inside tweets")
+                for tweet in tweets{
+                    print("\(tweet["text"]!)")
+                }
+            }, failure: { (task: URLSessionDataTask?, error: Error) -> Void in
+                
+            })
+                                
+                                
+                                
+        }, failure: { (error: Error?) -> Void in
+            print ("Error \(error!.localizedDescription)")
+        })
+        
+        return true
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -41,11 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(app: UIApplication, openURL url: NSURL, options: [String: AnyObject]) -> Bool{
-        print(url.description)
-        return true
-    }
-
-
+   
 }
 
