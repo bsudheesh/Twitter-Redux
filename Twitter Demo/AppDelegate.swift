@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         print(url.description)
+        print("Inside the application part")
         TwitterClient.sharedInstance?.handleOpenUrl(url: url as NSURL)
         
                 
@@ -24,6 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        if User.currentUser != nil{
+            print("There is a current user")
+        }
+        else{
+            print("There is no current user")
+        }
+        
         // Override point for customization after application launch.
         return true
     }
