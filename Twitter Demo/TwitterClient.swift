@@ -16,6 +16,8 @@ class TwitterClient: BDBOAuth1SessionManager {
     var loginFailure: ((NSError) -> ())?
     
     
+    
+    
     func handleOpenUrl(url: NSURL){
         let requesToken = BDBOAuth1Credential(queryString: url.query)
         
@@ -80,6 +82,13 @@ class TwitterClient: BDBOAuth1SessionManager {
             self.loginFailure?(error as! NSError)
         }
 
+    }
+    
+    
+    func logOut(){
+        User.currentUser = nil
+        deauthorize()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: User.userDidLogoutNotification), object: nil)
     }
     
     func currentAccount(success: @escaping (User) -> (), failure: @escaping (NSError) -> ()){
