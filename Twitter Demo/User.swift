@@ -41,8 +41,15 @@ class User: NSObject {
                 let defaults = UserDefaults.standard
                 let userData = defaults.object(forKey: "currentUserData") as? NSData //if there is user, return it
                 if let userData = userData{ //turn back to user and store to currentUser
-                    let dictionary =  try! JSONSerialization.jsonObject(with: userData as Data, options: []) as! NSDictionary
-                    _currentUser = User(dictionary: dictionary)
+                    do{
+                        let dictionary =  try JSONSerialization.jsonObject(with: userData as Data, options: []) as! NSDictionary
+                        _currentUser = User(dictionary: dictionary)
+                        
+                    }
+                    catch let error as NSError{
+                        print("Caught error" , error.localizedDescription)
+                    }
+                    
                 }
             }
             return _currentUser
