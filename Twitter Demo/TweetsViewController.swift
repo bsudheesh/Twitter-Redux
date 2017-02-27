@@ -52,10 +52,11 @@ class TweetsViewController: UIViewController,  UITableViewDataSource, UITableVie
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath as IndexPath) as! TweetsViewCell
-        
+        cell.tweetsLabel.text = "HI! This is not working"
         if(tweets != nil){
             let tweetsTemp = tweets[indexPath.row]
             cell.tweetsLabel.text = tweetsTemp.text as String!
+            cell.tweetsLabel.sizeToFit()
         }
         else{
             print("Tweets are nill")
