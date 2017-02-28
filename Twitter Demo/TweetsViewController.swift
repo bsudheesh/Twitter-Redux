@@ -27,14 +27,18 @@ class TweetsViewController: UIViewController,  UITableViewDataSource, UITableVie
         
         TwitterClient.sharedInstance?.homeTimeLine(success: { (tweets: [Tweet]) -> () in
             self.tweets = tweets
-            for tweet in tweets{
-                print(tweet.text)
-                print(tweet)
-                
-            }
+            self.tableView.reloadData()
         }, failure: { (error: NSError) -> () in
             print(error.localizedDescription)
         })
+        
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        tableView.insertSubview(refreshControl, at: 0)
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -44,46 +48,47 @@ class TweetsViewController: UIViewController,  UITableViewDataSource, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    func refreshControlAction (refreshControl: UIRefreshControl) {
+        
+        TwitterClient.sharedInstance?.homeTimeLine(success: { (moreTweets: [Tweet]) in
+            // To avoid replacing entire feed, we do this
+            for tweet in moreTweets {
+                self.tweets.insert(tweet, at: 0)
+                self.tableView.reloadData()
+            }
+            
+        }, failure: { (error: Error) in
+            print(error.localizedDescription)
+            
+        })
+        
+        self.tableView.reloadData()
+        
+        // Tell refreshControl to stop spinning
+        refreshControl.endRefreshing()
+    }
+    
     
     @IBAction func onLogoutButton(_ sender: Any) {
         TwitterClient.sharedInstance?.logOut()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 20
+        if self.tweets != nil{
+            return self.tweets.count
+        }
+        else{
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath as IndexPath) as! TweetsViewCell
-        cell.tweetsLabel.text = "HI! This is not working"
-        cell.userNameLabel.text = "Kushal Poudyal"
-        if(tweets != nil){
-            let tweetsTemp = tweets[indexPath.row]
-            let baseURL = tweetsTemp.profileImageUrl
-            
-            let imageURL = URL(string: baseURL as! String)
-            cell.profilePictureLabel.setImageWith(imageURL! as URL!)
-            print("The image URL is : ", imageURL!)
-            
-            
-            cell.tweetsLabel.text = tweetsTemp.text as String!
-            cell.userNameLabel.text = tweetsTemp.userName as String!
-            cell.tweetsLabel.sizeToFit()
-            cell.tweetsLabel.adjustsFontSizeToFitWidth = true
-            cell.userNameLabel.sizeToFit()
-            cell.userNameLabel.adjustsFontSizeToFitWidth = true
-        }
-        else{
-            print("Tweets are nill")
-        }
-        
-        
-        
-        
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetsViewCell
+        cell.tweet = tweets[indexPath.row]
+                
         return cell
     }
 

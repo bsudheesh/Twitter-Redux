@@ -15,6 +15,8 @@ class Tweet: NSObject {
     var favoritesCount: Int = 0
     var userName : NSString?
     var profileImageUrl: NSString?
+    var screenName: String?
+   
     
     
     init(dictinary: NSDictionary) {
@@ -26,7 +28,7 @@ class Tweet: NSObject {
         tempString = dictinary["user"] as? NSDictionary
         userName = tempString?["name"] as? NSString
         profileImageUrl = tempString?["profile_image_url_https"] as? NSString
-        print("The user name is : ", userName)
+        screenName = tempString?["screen_name"] as? NSString as String?
         
         
         if let timeStampString = timeStampString{
