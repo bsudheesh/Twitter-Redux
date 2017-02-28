@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class TweetsViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
 
@@ -16,6 +17,9 @@ class TweetsViewController: UIViewController,  UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //navigationController?.navigationBar.barTintColor = UIColor.purple
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.isTranslucent = false
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -25,6 +29,8 @@ class TweetsViewController: UIViewController,  UITableViewDataSource, UITableVie
             self.tweets = tweets
             for tweet in tweets{
                 print(tweet.text)
+                print(tweet)
+                
             }
         }, failure: { (error: NSError) -> () in
             print(error.localizedDescription)
@@ -53,10 +59,22 @@ class TweetsViewController: UIViewController,  UITableViewDataSource, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath as IndexPath) as! TweetsViewCell
         cell.tweetsLabel.text = "HI! This is not working"
+        cell.userNameLabel.text = "Kushal Poudyal"
         if(tweets != nil){
             let tweetsTemp = tweets[indexPath.row]
+            let baseURL = tweetsTemp.profileImageUrl
+            
+            let imageURL = URL(string: baseURL as! String)
+            cell.profilePictureLabel.setImageWith(imageURL! as URL!)
+            print("The image URL is : ", imageURL!)
+            
+            
             cell.tweetsLabel.text = tweetsTemp.text as String!
+            cell.userNameLabel.text = tweetsTemp.userName as String!
             cell.tweetsLabel.sizeToFit()
+            cell.tweetsLabel.adjustsFontSizeToFitWidth = true
+            cell.userNameLabel.sizeToFit()
+            cell.userNameLabel.adjustsFontSizeToFitWidth = true
         }
         else{
             print("Tweets are nill")
