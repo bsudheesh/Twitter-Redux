@@ -78,11 +78,52 @@ class TweetsViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func reTweetButton(_ sender: Any) {
+        print("Pressed button)")
+        tweet.reTweeted! = !tweet.reTweeted!
+        print("Clicked the retweet")
+        if (self.tweet.reTweeted!) {
+            
+            self.tweet.reTweetCount += 1
+            reTweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
+        } else {
+            self.tweet.reTweetCount -= 1
+            reTweetButton.setImage(UIImage(named: "retweet-icon"), for: .normal)
+        }
+        
+        // update rtcount
+        self.tweet.reTweetCountString = "\(self.tweet.reTweetCount)"
+        reTweetLabel.text = self.tweet.reTweetCountString
+    }
+    
+    
+    
+    @IBAction func favButton(_ sender: Any) {
+        self.tweet.favTweeted = !self.tweet.favTweeted!
+        
+        if (self.tweet.favTweeted!) {
+            self.tweet.favCount += 1
+            favButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
+        } else {
+            self.tweet.favCount -= 1
+            favButton.setImage(UIImage(named: "favor-icon"), for: .normal)
+        }
+        
+        // update favCount
+        self.tweet.favCountString = "\(self.tweet.favCount)"
+        likePhotoLabel.text = self.tweet.favCountString
+    }
+    
+    /*
     @IBAction func didPressRetweet(_ sender: UIButton) {
+     
         
     }
     @IBAction func didPressFavorite(_ sender: UIButton) {
+     
         
     }
+ */
 
 }

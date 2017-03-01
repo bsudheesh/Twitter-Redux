@@ -104,14 +104,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O01-ez-6Bc">
-                                                    <rect key="frame" x="310" y="113" width="57" height="30"/>
+                                                    <rect key="frame" x="318" y="113" width="42" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5390625" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UJg-Oa-YcX">
-                                                    <rect key="frame" x="203" y="113" width="48" height="30"/>
+                                                    <rect key="frame" x="214" y="113" width="48" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5390625" colorSpace="calibratedRGB"/>
@@ -122,15 +122,21 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RmM-Bh-xJt">
-                                                    <rect key="frame" x="158" y="112" width="30" height="30"/>
+                                                    <rect key="frame" x="162" y="112" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="Button" image="retweet-icon"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="reTweetButton:" destination="TV5-sc-oAM" eventType="touchUpInside" id="pDq-S1-Q6K"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qCb-Zb-vRi">
                                                     <rect key="frame" x="270" y="112" width="32" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="favor-icon"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="favButton:" destination="TV5-sc-oAM" eventType="touchUpInside" id="9YD-Nx-Qzh"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -188,9 +194,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="favor-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
-        <image name="retweet-icon" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
