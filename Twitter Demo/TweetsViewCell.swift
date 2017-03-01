@@ -104,7 +104,7 @@ class TweetsViewCell: UITableViewCell {
         
         if (self.tweet.favTweeted!) {
             self.tweet.favCount += 1
-            favButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
+            favButton.setImage(UIImage(named: "favor-icon-1"), for: .normal)
         } else {
             self.tweet.favCount -= 1
             favButton.setImage(UIImage(named: "favor-icon"), for: .normal)
