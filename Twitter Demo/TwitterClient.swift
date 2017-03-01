@@ -94,7 +94,7 @@ class TwitterClient: BDBOAuth1SessionManager {
         TwitterClient.sharedInstance?.deauthorize()
         TwitterClient.sharedInstance?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: NSURL(string: "twitterDemo://oauth") as URL!, scope: nil, success: { (requestToken:
             BDBOAuth1Credential?) -> Void in
-            print("I have got a token")
+            
             let temp = requestToken!.token as String!
             print("The token is : ", temp!)
             let url = NSURL (string: "https://api.twitter.com/oauth/authorize?oauth_token=\(temp!)")!

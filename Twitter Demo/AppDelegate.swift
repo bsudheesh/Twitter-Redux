@@ -15,9 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print(url.description)
-        print("Inside the application part")
-        TwitterClient.sharedInstance?.handleOpenUrl(url: url as NSURL)
+            TwitterClient.sharedInstance?.handleOpenUrl(url: url as NSURL)
         
                 
         return true

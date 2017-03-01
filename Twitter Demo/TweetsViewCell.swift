@@ -10,25 +10,33 @@ import UIKit
 
 class TweetsViewCell: UITableViewCell {
 
+    @IBOutlet weak var replyImage: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet weak var profilePictureLabel: UIImageView!
+    @IBOutlet weak var reTweetLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var likePhotoLabel: UILabel!
     @IBOutlet weak var tweetsLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
+    @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var reTweetButton: UIButton!
+    
+    
+    
     var tweet: Tweet!{
         didSet{
-            print("It did set")
+            
             
             let baseURL = tweet.profileImageUrl
             
             let imageURL = URL(string: baseURL as! String)
             profilePictureLabel.setImageWith(imageURL! as URL!)
-            print("The image URL is : ", imageURL!)
             var tempScreenName: String
             tempScreenName = tweet.screenName as String!
             tempScreenName = "@" + tempScreenName
@@ -45,6 +53,23 @@ class TweetsViewCell: UITableViewCell {
             if tweet.timestamp != nil{
                 timeLabel.text = TwitterClient.tweetTimeFormatted(timestamp: tweet.timestamp as! Date)
             }
+            
+            reTweetLabel.text = tweet.reTweetCountString
+            likePhotoLabel.text = tweet.favCountString
+            
+            if (!self.tweet.reTweeted!) {
+                reTweetButton.setImage(UIImage(named: "retweet-icon"), for: .normal)
+            } else {
+                reTweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
+            }
+            if (!self.tweet.favTweeted!) {
+                favButton.setImage(UIImage(named: "favor-icon"), for: .normal)
+            } else {
+                favButton.setImage(UIImage(named: "favor-icon-1"), for: .normal)
+            }
+            
+            
+            
         }
     }
 
@@ -52,6 +77,12 @@ class TweetsViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    @IBAction func didPressRetweet(_ sender: UIButton) {
+        
+    }
+    @IBAction func didPressFavorite(_ sender: UIButton) {
+        
     }
 
 }

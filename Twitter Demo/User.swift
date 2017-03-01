@@ -61,7 +61,6 @@ class User: NSObject {
             _currentUser = user
             let defaults = UserDefaults.standard
             if let user = user{ //if user does exits
-                print("Inside if")
                 let data = try! JSONSerialization.data(withJSONObject: user.dictionary!, options: [])
                 defaults.set (data, forKey: "currentUserData")
             }
