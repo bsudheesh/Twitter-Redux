@@ -56,7 +56,7 @@ class Tweet: NSObject {
             reTweetCount = (dictinary["retweet_count"] as? Int) ?? 0
         }
         
-        print("The fav Count is : ", favCount, "The retweet count is : ", retweetCount)
+        //print("The fav Count is : ", favCount, "The retweet count is : ", retweetCount)
         reTweetCountString = (reTweetCount >= 0) ? "\(reTweetCount)" : ""
         favCountString = (favCount >= 0) ? "\(favCount)" : ""
 

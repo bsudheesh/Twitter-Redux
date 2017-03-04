@@ -80,9 +80,9 @@ class TweetsViewCell: UITableViewCell {
     }
     
     @IBAction func reTweetButton(_ sender: Any) {
-        print("Pressed button)")
+        
         tweet.reTweeted! = !tweet.reTweeted!
-        print("Clicked the retweet")
+        
         if (self.tweet.reTweeted!) {
             
             self.tweet.reTweetCount += 1

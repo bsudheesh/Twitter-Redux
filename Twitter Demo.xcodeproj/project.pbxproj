@@ -18,6 +18,7 @@
 		FEA5D9781E61F6A2002DA8B2 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D9771E61F6A2002DA8B2 /* Tweet.swift */; };
 		FEA5D97B1E6200F1002DA8B2 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D97A1E6200F1002DA8B2 /* TwitterClient.swift */; };
 		FEA5D97D1E621B8D002DA8B2 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA5D97C1E621B8D002DA8B2 /* TweetsViewController.swift */; };
+		FECF67911E6B053D005E1CB7 /* TweetsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FECF67901E6B053D005E1CB7 /* TweetsDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FEA5D9771E61F6A2002DA8B2 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		FEA5D97A1E6200F1002DA8B2 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		FEA5D97C1E621B8D002DA8B2 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		FECF67901E6B053D005E1CB7 /* TweetsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				FE88840B1E61C5040026767E /* LoginViewController.swift */,
 				FEA5D97C1E621B8D002DA8B2 /* TweetsViewController.swift */,
 				FE1DB9681E64D9CB004C0A23 /* TweetsViewCell.swift */,
+				FECF67901E6B053D005E1CB7 /* TweetsDetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 			files = (
 				FE1DB9691E64D9CB004C0A23 /* TweetsViewCell.swift in Sources */,
 				FEA5D9761E61F693002DA8B2 /* User.swift in Sources */,
+				FECF67911E6B053D005E1CB7 /* TweetsDetailViewController.swift in Sources */,
 				FEA5D9781E61F6A2002DA8B2 /* Tweet.swift in Sources */,
 				FE88840C1E61C5040026767E /* LoginViewController.swift in Sources */,
 				FEA5D97D1E621B8D002DA8B2 /* TweetsViewController.swift in Sources */,
