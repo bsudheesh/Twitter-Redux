@@ -26,6 +26,8 @@ class Tweet: NSObject {
     var retweeted_status: Tweet?
     var id_str: String?
    var current_user_retweet: Tweet?
+    var profileId: Int?
+
     
     
     
@@ -40,6 +42,7 @@ class Tweet: NSObject {
         tempString = dictinary["user"] as? NSDictionary
         userName = tempString?["name"] as? NSString
         profileImageUrl = tempString?["profile_image_url_https"] as? NSString
+        profileId = dictinary["id"] as? Int
         screenName = tempString?["screen_name"] as? NSString as String?
         favCount = (dictinary["favorite_count"] as? Int) ?? 0
         id_str = dictinary["id_str"] as? String

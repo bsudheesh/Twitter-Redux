@@ -19,7 +19,7 @@ class TweetsViewCell: UITableViewCell {
     @IBOutlet weak var likePhotoLabel: UILabel!
     @IBOutlet weak var tweetsLabel: UILabel!
     
-    
+    var selectedProfileId: Int?
     var retweeted: Bool?
     var favorite: Bool?
     
@@ -128,6 +128,9 @@ class TweetsViewCell: UITableViewCell {
             likePhotoLabel.text = "\(tweet.favCount)"
         }
     }
+    
+    
+    
     
     /*
     @IBAction func didPressRetweet(_ sender: UIButton) {
