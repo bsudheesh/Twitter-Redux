@@ -23,7 +23,10 @@ class Tweet: NSObject {
     var rtStatus: NSDictionary?
     var reTweeted: Bool?
     var favTweeted: Bool?
-   
+    var retweeted_status: Tweet?
+    var id_str: String?
+   var current_user_retweet: Tweet?
+    
     
     
     init(dictinary: NSDictionary) {
@@ -39,8 +42,24 @@ class Tweet: NSObject {
         profileImageUrl = tempString?["profile_image_url_https"] as? NSString
         screenName = tempString?["screen_name"] as? NSString as String?
         favCount = (dictinary["favorite_count"] as? Int) ?? 0
+        id_str = dictinary["id_str"] as? String
+        
+        let current_user_retweet_dict = (dictinary["current_user_retweet"] as? NSDictionary)
+        if current_user_retweet_dict != nil {
+            current_user_retweet = Tweet(dictinary: current_user_retweet_dict!)
+        } else {
+            current_user_retweet = nil
+        }
         
         rtStatus = dictinary["retweeted_status"] as? NSDictionary
+        
+        
+        let retweeted_status_dict = (dictinary["retweeted_status"] as? NSDictionary) ?? nil
+        if retweeted_status_dict != nil {
+            retweeted_status = Tweet(dictinary: retweeted_status_dict!)
+        } else {
+            retweeted_status = nil
+        }
         
         
         if let timeStampString = timeStampString{

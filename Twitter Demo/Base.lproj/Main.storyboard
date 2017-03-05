@@ -184,7 +184,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" id="3HB-Iz-zo3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="294"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="dZh-B2-h4B">
@@ -247,6 +247,27 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Okl-W1-lWy">
+                                        <rect key="frame" x="39" y="287" width="36" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="reply-icon"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vgY-CR-1ql">
+                                        <rect key="frame" x="172" y="287" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="retweet-icon"/>
+                                        <connections>
+                                            <action selector="reTweetButton:" destination="wC2-b2-CQu" eventType="touchUpInside" id="uOL-Hk-AnN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sbX-AQ-g2L">
+                                        <rect key="frame" x="318" y="287" width="31" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="favor-icon"/>
+                                        <connections>
+                                            <action selector="favButton:" destination="wC2-b2-CQu" eventType="touchUpInside" id="x9x-2T-oDB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -256,17 +277,20 @@
                     <navigationItem key="navigationItem" title="Tweets" id="yrr-S3-qmc"/>
                     <connections>
                         <outlet property="dateLabel" destination="euW-bx-ts7" id="mbh-mR-xH1"/>
+                        <outlet property="favButton" destination="sbX-AQ-g2L" id="HKS-v5-u5E"/>
                         <outlet property="favLabel" destination="f3d-WT-l9y" id="3Gj-Lf-dlL"/>
                         <outlet property="nameLabel" destination="c8H-6S-mGG" id="3nv-7g-JWL"/>
                         <outlet property="profileImageView" destination="dZh-B2-h4B" id="t6D-T3-EXc"/>
+                        <outlet property="reTweetButton" destination="vgY-CR-1ql" id="RmI-NS-AAJ"/>
                         <outlet property="reTweetLabel" destination="abZ-HX-rZN" id="LQD-a0-6p1"/>
+                        <outlet property="replyButton" destination="Okl-W1-lWy" id="jM3-zW-dv2"/>
                         <outlet property="tweetsLabel" destination="6Iv-gG-I1y" id="G7h-7Q-SIg"/>
                         <outlet property="userNameLabel" destination="fjC-nC-iV1" id="P0O-Za-ME5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MM-vC-bJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461" y="140"/>
+            <point key="canvasLocation" x="1460.5" y="139.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Y1A-IG-VPW">
@@ -288,7 +312,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="favor-icon" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
+        <image name="retweet-icon" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

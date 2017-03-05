@@ -19,6 +19,10 @@ class TweetsViewCell: UITableViewCell {
     @IBOutlet weak var likePhotoLabel: UILabel!
     @IBOutlet weak var tweetsLabel: UILabel!
     
+    
+    var retweeted: Bool?
+    var favorite: Bool?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -54,6 +58,10 @@ class TweetsViewCell: UITableViewCell {
                 timeLabel.text = TwitterClient.tweetTimeFormatted(timestamp: tweet.timestamp as! Date)
             }
             
+            retweeted = tweet.reTweeted
+            favorite = tweet.favTweeted
+            
+            
             reTweetLabel.text = tweet.reTweetCountString
             likePhotoLabel.text = tweet.favCountString
             
@@ -81,38 +89,44 @@ class TweetsViewCell: UITableViewCell {
     
     @IBAction func reTweetButton(_ sender: Any) {
         
-        tweet.reTweeted! = !tweet.reTweeted!
-        
-        if (self.tweet.reTweeted!) {
-            
-            self.tweet.reTweetCount += 1
-            reTweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
-        } else {
-            self.tweet.reTweetCount -= 1
-            reTweetButton.setImage(UIImage(named: "retweet-icon"), for: .normal)
+        self.retweeted = !self.retweeted!
+        if let tweetID = self.tweet {
+            TwitterClient.sharedInstance?.reTweet(retweeting: self.retweeted!, tweetID: tweet.id_str!)
+            //print(tweetID)
+            //print(self.retweeted!)
         }
         
-        // update rtcount
-        self.tweet.reTweetCountString = "\(self.tweet.reTweetCount)"
-        reTweetLabel.text = self.tweet.reTweetCountString
+        if self.retweeted! {
+            reTweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
+            tweet.retweetCount += 1
+            reTweetLabel.text = "\(tweet.retweetCount)"
+        }
+        else {
+            reTweetButton.setImage(UIImage(named: "retweet-icon"), for: .normal)
+            tweet.retweetCount -= 1
+            reTweetLabel.text = "\(tweet.retweetCount)"
+        }
+
     }
     
     
     
     @IBAction func favButton(_ sender: Any) {
-        self.tweet.favTweeted = !self.tweet.favTweeted!
-        
-        if (self.tweet.favTweeted!) {
-            self.tweet.favCount += 1
-            favButton.setImage(UIImage(named: "favor-icon-1"), for: .normal)
-        } else {
-            self.tweet.favCount -= 1
-            favButton.setImage(UIImage(named: "favor-icon"), for: .normal)
+        self.favorite = !self.favorite!
+        if let tweetID = self.tweet {
+            TwitterClient.sharedInstance?.favoritePost(favoriting: self.favorite!, tweetID: tweet.id_str!)
         }
         
-        // update favCount
-        self.tweet.favCountString = "\(self.tweet.favCount)"
-        likePhotoLabel.text = self.tweet.favCountString
+        if self.favorite! {
+            favButton.setImage(UIImage(named: "favor-icon-1"), for: .normal)
+            tweet.favCount += 1
+            likePhotoLabel.text = "\(tweet.favCount)"
+        }
+        else {
+            favButton.setImage(UIImage(named: "favor-icon"), for: .normal)
+            tweet.favCount -= 1
+            likePhotoLabel.text = "\(tweet.favCount)"
+        }
     }
     
     /*

@@ -108,6 +108,42 @@ class TwitterClient: BDBOAuth1SessionManager {
 
     }
     
+    func reTweet(retweeting: Bool, tweetID: String) {
+        var endPoint: String?
+        if retweeting {
+            endPoint = "retweet"
+        }
+        else {
+            endPoint = "unretweet"
+        }
+        post("1.1/statuses/\(endPoint!)/\(tweetID).json", parameters: nil, progress: nil,
+             success: {
+                (task: URLSessionDataTask, response: Any?) in
+                print("retweetStatus: \(endPoint!): success")
+        },
+             failure: { (task: URLSessionDataTask?, error: Error) in
+                print("error retwitting: ERROR: \(error)")
+        })
+    }
+    
+    func favoritePost(favoriting: Bool, tweetID: String) {
+        var endPoint: String?
+        if favoriting {
+            endPoint = "create"
+        }
+        else {
+            endPoint = "destroy"
+        }
+        post("1.1/favorites/\(endPoint!).json?id=\(tweetID)", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, respond: Any?) in
+            print("favoriteStatus: \(endPoint!): success")
+        }) { (task :URLSessionDataTask?, error: Error) in
+            print("error favoriting: \(error.localizedDescription)")
+        }
+        
+    }
+    
+    
+    
     
     func logOut(){
         User.currentUser = nil
