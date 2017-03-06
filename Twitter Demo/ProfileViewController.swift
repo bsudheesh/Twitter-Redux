@@ -14,11 +14,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var tableView: UITableView!
-    //@IBOutlet weak var tableCell: UITableViewCell!
     //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profilePicture: UIImageView!
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
@@ -64,6 +63,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Inside the did load")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -97,14 +97,19 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)
+        let tweet = tweets![(indexPath!.row)]
+        let detailViewController = segue.destination as! ProfileTweetTableViewCell
+        detailViewController.tweets = tweet
     }
-    */
+    
 
 }

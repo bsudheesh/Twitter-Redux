@@ -143,9 +143,12 @@ class TweetsDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
         let navController = segue.destination as! UINavigationController
         let vc = navController.topViewController as! ProfileViewController
-        vc.tweets = Tweet.tweets 
+        vc.tweets = Tweet.tweets
+        print("Inside the segue for profile")
+ 
     }
     
 

@@ -97,9 +97,7 @@ class TweetsViewController: UIViewController,  UITableViewDataSource, UITableVie
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-        print("Inside segue")
         
-        print("the cell is : ", sender as! UITableViewCell)
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
         let tweet = tweets![(indexPath!.row)]

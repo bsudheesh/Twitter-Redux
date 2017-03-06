@@ -18,6 +18,9 @@ class ProfileTweetTableViewCell: UITableViewCell {
     @IBOutlet weak var tweetsLabel: UILabel!
     var profileId: Int?
     var delegate: TweetsViewCell?
+    var tweets: Tweet!
+    
+    
     
     var tweet: Tweet! {
         didSet {
