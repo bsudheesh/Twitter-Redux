@@ -12,8 +12,9 @@ class TweetsDetailViewController: UIViewController {
 
     @IBOutlet weak var profileImageView: UIImageView!
     
-    @IBOutlet weak var nameLabel: UILabel!
+    //@IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
     
     @IBOutlet weak var tweetsLabel: UILabel!
@@ -53,8 +54,9 @@ class TweetsDetailViewController: UIViewController {
         userNameLabel.text = tempString
         retweeted = tweets.reTweeted
         favorite = tweets.favTweeted
+        nameButton.setTitle(tweets.userName as String?, for: .normal)
         
-        nameLabel.text = tweets.userName as String!
+        //nameLabel.text = tweets.userName as String!
         
         tweetsLabel.text = tweets.text as String?
         tweetsLabel.sizeToFit()
@@ -134,14 +136,17 @@ class TweetsDetailViewController: UIViewController {
     
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let navController = segue.destination as! UINavigationController
+        let vc = navController.topViewController as! ProfileViewController
+        vc.tweets = Tweet.tweets 
     }
-    */
+    
 
 }

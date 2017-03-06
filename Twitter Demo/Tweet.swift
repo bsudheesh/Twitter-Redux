@@ -27,7 +27,7 @@ class Tweet: NSObject {
     var id_str: String?
    var current_user_retweet: Tweet?
     var profileId: Int?
-
+    static var tweets = [Tweet]()
     
     
     
@@ -87,7 +87,7 @@ class Tweet: NSObject {
     }
     
     class func tweetsWithArray(dictionaries: [NSDictionary]) -> [Tweet]{
-        var tweets = [Tweet]()
+        
         for dictinary in dictionaries{
             let tweet = Tweet(dictinary: dictinary)
             tweets.append(tweet)
