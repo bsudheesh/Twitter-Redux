@@ -192,7 +192,7 @@
                                 <rect key="frame" x="0.0" y="1" width="375" height="310"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ETA-cI-YBK">
+                                    <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover-pic" id="ETA-cI-YBK">
                                         <rect key="frame" x="0.0" y="64" width="375" height="183"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -203,13 +203,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wfu-bu-30t">
                                         <rect key="frame" x="8" y="179" width="359" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QZq-k7-xM3">
                                         <rect key="frame" x="8" y="203" width="359" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" id="rDs-EA-BxW">
@@ -323,7 +323,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8G8-39-5H0"/>
+                    <navigationItem key="navigationItem" id="8G8-39-5H0">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="g4u-Wf-ZnJ">
+                            <connections>
+                                <segue destination="DuU-6S-dlH" kind="modal" identifier="homeToMain" id="eaw-Ry-0IN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bigImageURL" destination="ETA-cI-YBK" id="tEr-Z7-sj9"/>
                         <outlet property="followersLabel" destination="EB7-a6-M1X" id="lbF-Yy-k08"/>
@@ -348,7 +354,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" id="3HB-Iz-zo3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="305"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="dZh-B2-h4B">
@@ -369,58 +375,51 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="euW-bx-ts7">
-                                        <rect key="frame" x="8" y="200" width="340" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Retweets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="abZ-HX-rZN">
-                                        <rect key="frame" x="8" y="245" width="71" height="21"/>
+                                        <rect key="frame" x="8" y="224" width="71" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="RETWEETS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sEi-I0-Fk4">
-                                        <rect key="frame" x="79" y="245" width="88" height="21"/>
+                                        <rect key="frame" x="79" y="224" width="88" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FAVORI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f3d-WT-l9y">
-                                        <rect key="frame" x="204" y="245" width="57" height="21"/>
+                                        <rect key="frame" x="204" y="224" width="57" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FAVORITES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D9i-t8-7hc">
-                                        <rect key="frame" x="261" y="245" width="88" height="21"/>
+                                        <rect key="frame" x="261" y="224" width="88" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Okl-W1-lWy">
-                                        <rect key="frame" x="39" y="287" width="36" height="30"/>
+                                        <rect key="frame" x="39" y="262" width="36" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="reply-icon"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vgY-CR-1ql">
-                                        <rect key="frame" x="172" y="287" width="30" height="30"/>
+                                        <rect key="frame" x="172" y="262" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="retweet-icon"/>
+                                        <state key="normal" title="Button" image="retweet-icon-green"/>
                                         <connections>
                                             <action selector="reTweetButton:" destination="wC2-b2-CQu" eventType="touchUpInside" id="uOL-Hk-AnN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sbX-AQ-g2L">
-                                        <rect key="frame" x="318" y="287" width="31" height="30"/>
+                                        <rect key="frame" x="318" y="262" width="31" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="favor-icon"/>
+                                        <state key="normal" title="Button" image="favor-icon-1"/>
                                         <connections>
                                             <action selector="favButton:" destination="wC2-b2-CQu" eventType="touchUpInside" id="x9x-2T-oDB"/>
                                         </connections>
@@ -450,7 +449,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateLabel" destination="euW-bx-ts7" id="mbh-mR-xH1"/>
                         <outlet property="favButton" destination="sbX-AQ-g2L" id="HKS-v5-u5E"/>
                         <outlet property="favLabel" destination="f3d-WT-l9y" id="3Gj-Lf-dlL"/>
                         <outlet property="nameButton" destination="hfG-6m-Hz1" id="1cX-up-MOH"/>
@@ -478,20 +476,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="310"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="iLj-sS-g7P">
+                                    <imageView userInteractionEnabled="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="wwe-cover-pic" id="iLj-sS-g7P">
                                         <rect key="frame" x="0.0" y="64" width="375" height="183"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9RC-s0-4YE">
                                         <rect key="frame" x="8" y="179" width="359" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d5w-Jj-YAL">
                                         <rect key="frame" x="8" y="203" width="359" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" misplaced="YES" id="968-dh-idA">
@@ -677,7 +675,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" id="0ig-2Y-mx3">
-                                <rect key="frame" x="0.0" y="221" width="375" height="219"/>
+                                <rect key="frame" x="0.0" y="220" width="375" height="219"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -767,13 +765,18 @@
     </scenes>
     <resources>
         <image name="compose" width="30" height="27"/>
-        <image name="favor-icon" width="30" height="30"/>
+        <image name="cover-pic" width="1938" height="626"/>
+        <image name="favor-icon-1" width="30" height="30"/>
         <image name="reply-icon" width="30" height="30"/>
-        <image name="retweet-icon" width="30" height="30"/>
+        <image name="retweet-icon-green" width="90" height="90"/>
+        <image name="wwe-cover-pic" width="1710" height="692"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="eaw-Ry-0IN"/>
+    </inferredMetricsTieBreakers>
 </document>

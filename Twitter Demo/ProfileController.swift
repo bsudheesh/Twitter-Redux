@@ -50,19 +50,22 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
         followersLabel.text = String((user.followersCount)! as Int)
         
         followingLabel.text = String((user.followingCount)! as Int)
-        
+        bigImageURL.isOpaque = false
+        /*
         if let profileImageURL = user.backgroundImageURL {
             bigImageURL.setImageWith(profileImageURL as URL)
             bigImageURL.layer.zPosition = 1
         } else {
             bigImageURL.image = nil
         }
+ */
         
         if let headerImageURL = user.profileUrl {
             profileImageUrl.setImageWith(headerImageURL as URL)
         } else {
             profileImageUrl.image = nil
         }
+        profileImageUrl.isOpaque = false
         
         
         TwitterClient.sharedInstance?.getTweetsFromUser(screemID: user.screenName!, success: { (response: [Tweet]) in
@@ -119,12 +122,17 @@ class ProfileController: UIViewController, UITableViewDataSource, UITableViewDel
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)
-        let tweet = tweets![(indexPath!.row)]
-        let detailViewController = segue.destination as! ProfileTableViewCell
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "homeToMain"{
+        }
+        else{
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let tweet = tweets![(indexPath!.row)]
+            let detailViewController = segue.destination as! ProfileTableViewCell
+            // Get the new view controller using segue.destinationViewController.
+            // Pass the selected object to the new view controller.
+
+        }
     }
     
 

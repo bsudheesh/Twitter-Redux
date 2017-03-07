@@ -62,6 +62,7 @@ class TweetsDetailViewController: UIViewController {
         
         reTweetLabel.text = tweets.reTweetCountString
         favLabel.text = tweets.favCountString
+        /*
         
         if self.retweeted! {
             reTweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
@@ -76,6 +77,7 @@ class TweetsDetailViewController: UIViewController {
         else {
             favButton.setImage(UIImage(named: "favor-icon"), for: .normal)
         }
+ */
         reTweetLabel.text = "\(tweets.retweetCount)"
         favLabel.text = "\(tweets.favCount)"
         
