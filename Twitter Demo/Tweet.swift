@@ -113,7 +113,6 @@ class Tweet: NSObject {
         
         for dictinary in dictionaries{
             let tweet = Tweet(dictinary: dictinary)
-            print(dictinary)
             tweets.append(tweet)
         }
         

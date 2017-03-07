@@ -30,7 +30,7 @@ class User: NSObject {
         self.dictionary = dictionary
         name = dictionary["name"] as? NSString
         screenName = dictionary["screen_name"] as? String
-        let profileUrlString = dictionary["profile_background_image_url_https"] as? NSString //profile_banner_url
+        let profileUrlString = dictionary["profile_image_url_https"] as? NSString //profile_banner_url
         if let profileUrlString = profileUrlString{
             profileUrl = NSURL(string: profileUrlString as String)
         }

@@ -278,7 +278,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tweets" id="yrr-S3-qmc">
-                        <barButtonItem key="rightBarButtonItem" title="Compose" id="eOa-pG-lyj"/>
+                        <barButtonItem key="rightBarButtonItem" title="Compose" id="eOa-pG-lyj">
+                            <connections>
+                                <action selector="onComposeButton:" destination="wC2-b2-CQu" id="bv6-lP-Zth"/>
+                                <segue destination="e42-4C-TNe" kind="modal" identifier="compose" id="aqy-qk-d5N"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="euW-bx-ts7" id="mbh-mR-xH1"/>
@@ -440,7 +445,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="j6f-zg-dVP"/>
+                    <navigationItem key="navigationItem" id="j6f-zg-dVP">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="PZA-uG-q3k">
+                            <connections>
+                                <action selector="logoutButton:" destination="CpG-fQ-B4B" id="z2g-bP-pBw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backgroundPicture" destination="XWX-Ho-d6o" id="4FH-RN-ebY"/>
                         <outlet property="followersLabel" destination="nKa-7W-FTu" id="iZh-dT-ip1"/>
@@ -500,31 +511,75 @@
                     <view key="view" contentMode="scaleToFill" id="kxp-ea-CTn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" id="0ig-2Y-mx3">
+                                <rect key="frame" x="0.0" y="221" width="375" height="219"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8ky-xg-gpr">
+                                <rect key="frame" x="152" y="74" width="207" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HFZ-6q-Ysw">
+                                <rect key="frame" x="152" y="117" width="207" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.56571283284023666" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="vwm-3h-F64">
+                                <rect key="frame" x="16" y="74" width="119" height="139"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="mIx-Sm-po4"/>
+                    <navigationItem key="navigationItem" id="mIx-Sm-po4">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Vwk-xB-7cU">
+                            <connections>
+                                <action selector="onCancelButton:" destination="L9M-Kp-CZa" id="sVw-XF-ne8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Send" id="mS3-VX-XYO">
+                            <connections>
+                                <action selector="onSaveButton:" destination="L9M-Kp-CZa" id="RBb-mf-j1f"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameLabel" destination="8ky-xg-gpr" id="c42-YC-2RO"/>
+                        <outlet property="tweetTextView" destination="0ig-2Y-mx3" id="ugG-we-5cl"/>
+                        <outlet property="userImageLevel" destination="vwm-3h-F64" id="mhD-Nh-hxX"/>
+                        <outlet property="userNameLabel" destination="HFZ-6q-Ysw" id="3uU-w6-K9e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QII-Rn-fN4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2436.5" y="1302.5"/>
+            <point key="canvasLocation" x="3023.5" y="1302.5"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="rB8-Fm-aEk">
+        <scene sceneID="RtI-CR-fiQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H8U-gU-CM2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e42-4C-TNe" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Chv-WU-ND6">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="530-Ay-CxT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="L9M-Kp-CZa" kind="relationship" relationship="rootViewController" id="Uej-o0-bya"/>
+                        <segue destination="L9M-Kp-CZa" kind="relationship" relationship="rootViewController" id="rQw-kG-Tfn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C62-Ha-Yvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zTs-Af-54i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849.5" y="1302.5"/>
+            <point key="canvasLocation" x="2436.5" y="1302.5"/>
         </scene>
     </scenes>
     <resources>

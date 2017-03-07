@@ -8,10 +8,47 @@
 
 import UIKit
 
-class ComposeViewController: UIViewController {
+class ComposeViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var tweetTextView: UITextView!
+    
+    var tweets: User!
+    
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    
+    @IBOutlet weak var userImageLevel: UIImageView!
+    
+    @IBAction func onSaveButton(_ sender: Any) {
+        if let text = self.tweetTextView.text {
+            TwitterClient.sharedInstance?.sendTweet(text: text, callBack: { (tweet, error) in
+                DispatchQueue.main.async {
+                    self.view.endEditing(true)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+        }
+    }
+    
+    
+    @IBAction func onCancelButton(_ sender: Any) {
+         self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tweetTextView.delegate = self
+        tweetTextView.becomeFirstResponder()
+        userNameLabel.text = "@\((tweets.screenName!))"
+        userNameLabel.sizeToFit()
+        nameLabel.text = tweets.name as String?
+        nameLabel.sizeToFit()
+        userImageLevel.setImageWith(tweets.profileUrl! as URL)
 
         // Do any additional setup after loading the view.
     }

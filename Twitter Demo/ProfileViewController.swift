@@ -55,6 +55,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         TwitterClient.sharedInstance?.getTweetsFromUser(screemID: tweet.screenName!, success: { (response: [Tweet]) in
             
             self.tweets = response
+            for tweet in self.tweets{
+                print("The screenname is : ", tweet.screenName)
+            }
             
             self.tableView.reloadData()
         }, failure: { (error:Error) in
@@ -64,6 +67,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     
     
+    @IBAction func logoutButton(_ sender: Any) {
+        TwitterClient.sharedInstance?.logOut()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

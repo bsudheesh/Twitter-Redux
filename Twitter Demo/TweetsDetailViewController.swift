@@ -84,6 +84,7 @@ class TweetsDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -142,11 +143,18 @@ class TweetsDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        let navController = segue.destination as! UINavigationController
-        let vc = navController.topViewController as! ProfileViewController
-        vc.tweet = tweets
-        print("Inside the segue for profile")
+        if segue.identifier == "compose"{
+            let secondController = segue.destination as! UINavigationController
+            let vc = secondController.topViewController as! ComposeViewController
+            vc.tweets = User._currentUser
+            
+        }
+        else{
+            let navController = segue.destination as! UINavigationController
+            let vc = navController.topViewController as! ProfileViewController
+            vc.tweet = tweets
+            print("Inside the segue for profile")
+        }
  
     }
     
