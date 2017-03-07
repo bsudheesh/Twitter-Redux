@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var nameLabel: UILabel!
     
     //@IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backgroundPicture: UIImageView!
     @IBOutlet weak var profilePicture: UIImageView!
     
     @IBOutlet weak var tableView: UITableView!
@@ -35,23 +36,29 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         tweetLabel.text = String((user.tweetCount)! as Int)
         followersLabel.text = String((user.followersCount)! as Int)
         
-        if let profileImageURL = user.profileUrl {
-            bigPicture.setImageWith(profileImageURL as URL)
-            bigPicture.layer.zPosition = 1
+        followingLabel.text = String((user.followingCount)! as Int)
+        
+        if let profileImageURL = user.backgroundImageURL {
+            backgroundPicture.setImageWith(profileImageURL as URL)
+            backgroundPicture.layer.zPosition = 1
         } else {
-            bigPicture.image = nil
+            backgroundPicture.image = nil
         }
         
-        if let headerImageURL = user.headerPicUrl {
-            profilePicture.setImageWith(headerImageURL)
+        if let headerImageURL = user.profileUrl {
+            profilePicture.setImageWith(headerImageURL as URL)
         } else {
             profilePicture.image = nil
         }
         
         
-        TwitterClient.sharedInstance?.getUserTweets(id: user.id!, success: { (response: [Tweet]) in
-            print("tweets: \(response)")
+        TwitterClient.sharedInstance?.getTweetsFromUser(screemID: user.screenName!, success: { (response: [Tweet]) in
+            
             self.tweets = response
+            for tweet in self.tweets{
+                print("User tweet : ", tweet.text!)
+            }
+            
             self.tableView.reloadData()
         }, failure: { (error:Error) in
             print("error: \(error)")
@@ -66,14 +73,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         print("Inside the did load")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 85
         tableView.reloadData()
 
         // Do any additional setup after loading the view.
     }
-    @IBOutlet weak var bigPicture: UIImageView!
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -91,6 +95,30 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTweetViewCell", for: indexPath) as! ProfileTweetTableViewCell
         let tweet = self.tweets[indexPath.row]
+        
+        if let profileImageURL = tweet.profileImageUrl{
+            let imageURL = URL(string: profileImageURL as! String)
+            cell.profileImageView.setImageWith(imageURL! as URL!)
+        }
+        else{
+            cell.profileImageView.image = nil
+        }
+        cell.tweetsLabel.text = tweet.text as String?
+        cell.tweetsLabel.sizeToFit()
+        cell.userNameLabel.text = "@\(tweet.screenName!)"
+        cell.userNameLabel.sizeToFit()
+        
+        if tweet.timestamp != nil{
+            cell.dateLabel.text = TwitterClient.tweetTimeFormatted(timestamp: tweet.timestamp as! Date)
+        }
+        
+        cell.dateLabel.sizeToFit()
+        cell.nameLabel.text = tweet.userName
+        cell.nameLabel.sizeToFit()
+        cell.profileId = tweet.profileId
+        
+
+        
         //cell.tweet = tweet
         //print("cell.profile: \(cell.profileImageView.image)")
         return cell
@@ -108,7 +136,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         let indexPath = tableView.indexPath(for: cell)
         let tweet = tweets![(indexPath!.row)]
         let detailViewController = segue.destination as! ProfileTweetTableViewCell
+        
+        
         detailViewController.tweets = tweet
+        
+        
     }
     
 

@@ -10,8 +10,9 @@ import UIKit
 
 class User: NSObject {
     var name: NSString?
-    var screenName: NSString?
+    var screenName: String?
     var profileUrl: NSURL?
+    var backgroundImageURL: URL?
     var tagLine: NSString?
     var dictionary: NSDictionary?
     var headerPicUrl: URL?
@@ -20,29 +21,35 @@ class User: NSObject {
     var followingCount: Int?
     var followersCount: Int?
     
+    
     static let userDidLogoutNotification = "UserDidLogout"
     
     
     
     init(dictionary: NSDictionary){
         self.dictionary = dictionary
-        
-        
         name = dictionary["name"] as? NSString
-        screenName = dictionary["screen_name"] as? NSString
-        let profileUrlString = dictionary["profile_image_url_https"] as? NSString
+        screenName = dictionary["screen_name"] as? String
+        let profileUrlString = dictionary["profile_background_image_url_https"] as? NSString //profile_banner_url
         if let profileUrlString = profileUrlString{
             profileUrl = NSURL(string: profileUrlString as String)
         }
         tagLine = dictionary["description"] as? NSString
         tweetCount = dictionary["statuses_count"] as? Int
         followersCount = dictionary["followers_count"] as? Int
-        followingCount = dictionary["following"] as? Int
-        let headerPicUrlString = dictionary["profile_banner_url"] as? String
+        followingCount = dictionary["friends_count"] as? Int
+        let headerPicUrlString = dictionary["profile_banner_url"] as? String //profile_image_url_https
         if let headerPicUrlString = headerPicUrlString {
             headerPicUrl = URL(string: headerPicUrlString)
             id = dictionary["id"] as? Int
         }
+        
+        let backgroundImageURLString = dictionary["profile_background_image_url_https"] as? String
+        if let backgroundImageURLString = backgroundImageURLString {
+            self.backgroundImageURL = URL(string: backgroundImageURLString)
+        }
+        
+        
     }
     static var _currentUser: User?
     

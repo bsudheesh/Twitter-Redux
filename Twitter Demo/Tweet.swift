@@ -27,6 +27,7 @@ class Tweet: NSObject {
     var id_str: String?
    var current_user_retweet: Tweet?
     var profileId: Int?
+   
     static var tweets = [Tweet]()
     
     
@@ -46,6 +47,7 @@ class Tweet: NSObject {
         screenName = tempString?["screen_name"] as? NSString as String?
         favCount = (dictinary["favorite_count"] as? Int) ?? 0
         id_str = dictinary["id_str"] as? String
+       
         
         let current_user_retweet_dict = (dictinary["current_user_retweet"] as? NSDictionary)
         if current_user_retweet_dict != nil {

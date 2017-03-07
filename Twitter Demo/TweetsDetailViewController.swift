@@ -39,6 +39,7 @@ class TweetsDetailViewController: UIViewController {
     var favorite: Bool?
     
     
+    
     var tweets: Tweet!
     
     override func viewDidLoad() {
@@ -146,7 +147,7 @@ class TweetsDetailViewController: UIViewController {
         
         let navController = segue.destination as! UINavigationController
         let vc = navController.topViewController as! ProfileViewController
-        vc.tweets = Tweet.tweets
+        vc.user = User._currentUser
         print("Inside the segue for profile")
  
     }

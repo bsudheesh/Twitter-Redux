@@ -128,19 +128,4 @@ class TweetsViewCell: UITableViewCell {
             likePhotoLabel.text = "\(tweet.favCount)"
         }
     }
-    
-    
-    
-    
-    /*
-    @IBAction func didPressRetweet(_ sender: UIButton) {
-     
-        
-    }
-    @IBAction func didPressFavorite(_ sender: UIButton) {
-     
-        
-    }
- */
-
 }

@@ -22,8 +22,11 @@ class ProfileTweetTableViewCell: UITableViewCell {
     
     
     
+    
     var tweet: Tweet! {
+        
         didSet {
+            print("Inside the did set")
             
             if let profileImageURL = tweet.profileImageUrl{
                 let imageURL = URL(string: profileImageURL as! String)
@@ -41,6 +44,7 @@ class ProfileTweetTableViewCell: UITableViewCell {
             let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(profileTapped))
             profileImageView.isUserInteractionEnabled = true
             profileImageView.addGestureRecognizer(tapGestureRecognizer)
+ 
         }
     }
     
