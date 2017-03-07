@@ -14,6 +14,8 @@
 		FE54D8FF1E61C31A00A55914 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE54D8FE1E61C31A00A55914 /* Assets.xcassets */; };
 		FE54D9021E61C31A00A55914 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE54D9001E61C31A00A55914 /* LaunchScreen.storyboard */; };
 		FE683CE61E6E16B40059F210 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE683CE51E6E16B40059F210 /* ComposeViewController.swift */; };
+		FE683CE81E6E65A80059F210 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE683CE71E6E65A80059F210 /* ProfileController.swift */; };
+		FE683CEA1E6E66EF0059F210 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE683CE91E6E66EF0059F210 /* ProfileTableViewCell.swift */; };
 		FE88840C1E61C5040026767E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE88840B1E61C5040026767E /* LoginViewController.swift */; };
 		FE9598281E6C7FA800D3B7BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9598271E6C7FA800D3B7BD /* ProfileViewController.swift */; };
 		FE95982A1E6C93E200D3B7BD /* ProfileTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9598291E6C93E200D3B7BD /* ProfileTweetTableViewCell.swift */; };
@@ -36,6 +38,8 @@
 		FE54D9011E61C31A00A55914 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE54D9031E61C31A00A55914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE683CE51E6E16B40059F210 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		FE683CE71E6E65A80059F210 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		FE683CE91E6E66EF0059F210 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		FE88840B1E61C5040026767E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FE9598271E6C7FA800D3B7BD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FE9598291E6C93E200D3B7BD /* ProfileTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTweetTableViewCell.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				FE9598271E6C7FA800D3B7BD /* ProfileViewController.swift */,
 				FE9598291E6C93E200D3B7BD /* ProfileTweetTableViewCell.swift */,
 				FE683CE51E6E16B40059F210 /* ComposeViewController.swift */,
+				FE683CE71E6E65A80059F210 /* ProfileController.swift */,
+				FE683CE91E6E66EF0059F210 /* ProfileTableViewCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -271,8 +277,10 @@
 				FE683CE61E6E16B40059F210 /* ComposeViewController.swift in Sources */,
 				FE9598281E6C7FA800D3B7BD /* ProfileViewController.swift in Sources */,
 				FE95982A1E6C93E200D3B7BD /* ProfileTweetTableViewCell.swift in Sources */,
+				FE683CEA1E6E66EF0059F210 /* ProfileTableViewCell.swift in Sources */,
 				FEA5D97B1E6200F1002DA8B2 /* TwitterClient.swift in Sources */,
 				FE54D8F81E61C31A00A55914 /* AppDelegate.swift in Sources */,
+				FE683CE81E6E65A80059F210 /* ProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

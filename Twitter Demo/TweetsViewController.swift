@@ -97,12 +97,23 @@ class TweetsViewController: UIViewController,  UITableViewDataSource, UITableVie
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if segue.identifier == "profileConnector"{
+            let profileViewController = segue.destination as! UINavigationController
+            let vc = profileViewController.topViewController as! ProfileController
+            
+            vc.user = User._currentUser
+            
+        }
+        else{
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let tweet = tweets![(indexPath!.row)]
+            let detailViewController = segue.destination as! TweetsDetailViewController
+            detailViewController.tweets = tweet
+            
+        }
         
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)
-        let tweet = tweets![(indexPath!.row)]
-        let detailViewController = segue.destination as! TweetsDetailViewController
-        detailViewController.tweets = tweet
+        
  
         
         // Get the new view controller using segue.destinationViewController.
