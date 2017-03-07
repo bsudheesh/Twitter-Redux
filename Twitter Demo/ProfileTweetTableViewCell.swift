@@ -23,31 +23,6 @@ class ProfileTweetTableViewCell: UITableViewCell {
     
     
     
-    var tweet: Tweet! {
-        
-        didSet {
-            print("Inside the did set")
-            
-            if let profileImageURL = tweet.profileImageUrl{
-                let imageURL = URL(string: profileImageURL as! String)
-                profileImageView.setImageWith(imageURL! as URL!)
-            }
-            else{
-                profileImageView.image = nil
-            }
-            tweetsLabel.text = tweet.text as String?
-            userNameLabel.text = "@\(tweet.userName!)"
-            dateLabel.text = "\(tweet.timestamp)"
-            nameLabel.text = tweet.screenName
-            profileId = tweet.profileId
-            
-            let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(profileTapped))
-            profileImageView.isUserInteractionEnabled = true
-            profileImageView.addGestureRecognizer(tapGestureRecognizer)
- 
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

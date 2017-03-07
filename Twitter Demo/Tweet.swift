@@ -14,7 +14,12 @@ class Tweet: NSObject {
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
     var userName : NSString?
-    var profileImageUrl: NSString?
+    
+    var profileImageUrlString: NSString?
+    var backgroundImageUrlString: NSString?
+    var profileUrl: URL?
+    var backgroundImageURL: URL?
+    
     var screenName: String?
     var reTweetCount: Int = 0
     var reTweetCountString: String = ""
@@ -27,12 +32,17 @@ class Tweet: NSObject {
     var id_str: String?
    var current_user_retweet: Tweet?
     var profileId: Int?
+    var tweetCount: Int?
+    var followingCount: Int?
+    var followersCount: Int?
+
    
     static var tweets = [Tweet]()
     
     
     
     init(dictinary: NSDictionary) {
+        
         reTweeted = (dictinary["retweeted"] as? Bool) ?? true
         favTweeted = (dictinary["favorited"] as? Bool) ?? false
         text = dictinary["text"] as? NSString
@@ -42,12 +52,23 @@ class Tweet: NSObject {
         var tempString: NSDictionary?
         tempString = dictinary["user"] as? NSDictionary
         userName = tempString?["name"] as? NSString
-        profileImageUrl = tempString?["profile_image_url_https"] as? NSString
+        tweetCount = tempString?["statuses_count"] as? Int
+        profileImageUrlString = tempString?["profile_image_url_https"] as? NSString
+        if let profileImageUrlString = profileImageUrlString{
+            profileUrl = NSURL(string: profileImageUrlString as String) as URL?
+        }
+        
         profileId = dictinary["id"] as? Int
         screenName = tempString?["screen_name"] as? NSString as String?
         favCount = (dictinary["favorite_count"] as? Int) ?? 0
         id_str = dictinary["id_str"] as? String
-       
+        backgroundImageUrlString = dictinary["profile_background_image_url"] as? String as NSString?
+        if let backgroundImageUrlString = backgroundImageUrlString{
+            backgroundImageURL = NSURL(string: backgroundImageUrlString as String) as URL?
+        }
+        followersCount = tempString?["followers_count"] as? Int
+        followingCount = tempString?["friends_count"] as? Int
+        
         
         let current_user_retweet_dict = (dictinary["current_user_retweet"] as? NSDictionary)
         if current_user_retweet_dict != nil {
@@ -92,6 +113,7 @@ class Tweet: NSObject {
         
         for dictinary in dictionaries{
             let tweet = Tweet(dictinary: dictinary)
+            print(dictinary)
             tweets.append(tweet)
         }
         

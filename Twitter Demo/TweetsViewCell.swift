@@ -37,10 +37,8 @@ class TweetsViewCell: UITableViewCell {
         didSet{
             
             
-            let baseURL = tweet.profileImageUrl
             
-            let imageURL = URL(string: baseURL as! String)
-            profilePictureLabel.setImageWith(imageURL! as URL!)
+            profilePictureLabel.setImageWith(tweet.profileUrl!)
             var tempScreenName: String
             tempScreenName = tweet.screenName as String!
             tempScreenName = "@" + tempScreenName

@@ -22,42 +22,39 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
-    var user: User!
+    var tweet: Tweet!
     var tweets: [Tweet]! = []
     
     
     override func viewDidAppear(_ animated: Bool) {
         
-        nameLabel.text = user.name! as String
+        nameLabel.text = tweet.userName! as String//user.name! as String
         nameLabel.layer.zPosition = 1
-        userNameLabel.text = "@\((user.screenName!))"
+        userNameLabel.text = "@\((tweet.screenName!))"
         userNameLabel.layer.zPosition = 1
         
-        tweetLabel.text = String((user.tweetCount)! as Int)
-        followersLabel.text = String((user.followersCount)! as Int)
+        tweetLabel.text = String((tweet.tweetCount)! as Int)
+        followersLabel.text = String((tweet.followersCount)! as Int)
         
-        followingLabel.text = String((user.followingCount)! as Int)
+        followingLabel.text = String((tweet.followingCount)! as Int)
         
-        if let profileImageURL = user.backgroundImageURL {
+        if let profileImageURL = tweet.backgroundImageURL {
             backgroundPicture.setImageWith(profileImageURL as URL)
             backgroundPicture.layer.zPosition = 1
         } else {
             backgroundPicture.image = nil
         }
         
-        if let headerImageURL = user.profileUrl {
+        if let headerImageURL = tweet.profileUrl {
             profilePicture.setImageWith(headerImageURL as URL)
         } else {
             profilePicture.image = nil
         }
         
         
-        TwitterClient.sharedInstance?.getTweetsFromUser(screemID: user.screenName!, success: { (response: [Tweet]) in
+        TwitterClient.sharedInstance?.getTweetsFromUser(screemID: tweet.screenName!, success: { (response: [Tweet]) in
             
             self.tweets = response
-            for tweet in self.tweets{
-                print("User tweet : ", tweet.text!)
-            }
             
             self.tableView.reloadData()
         }, failure: { (error:Error) in
@@ -95,14 +92,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTweetViewCell", for: indexPath) as! ProfileTweetTableViewCell
         let tweet = self.tweets[indexPath.row]
-        
-        if let profileImageURL = tweet.profileImageUrl{
-            let imageURL = URL(string: profileImageURL as! String)
-            cell.profileImageView.setImageWith(imageURL! as URL!)
-        }
-        else{
-            cell.profileImageView.image = nil
-        }
+        cell.profileImageView.setImageWith(tweet.profileUrl!)
         cell.tweetsLabel.text = tweet.text as String?
         cell.tweetsLabel.sizeToFit()
         cell.userNameLabel.text = "@\(tweet.screenName!)"
@@ -113,7 +103,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         cell.dateLabel.sizeToFit()
-        cell.nameLabel.text = tweet.userName
+        cell.nameLabel.text = tweet.userName as String?
         cell.nameLabel.sizeToFit()
         cell.profileId = tweet.profileId
         

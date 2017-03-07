@@ -46,9 +46,7 @@ class TweetsDetailViewController: UIViewController {
         super.viewDidLoad()
         //userNameLabel.text = tweets.userName as! String
         
-        let baseURL = tweets.profileImageUrl
-        let imageURL = URL(string: baseURL as! String)
-        profileImageView.setImageWith(imageURL! as URL!)
+        profileImageView.setImageWith(tweets.profileUrl!)
         var tempString : String
         tempString = tweets.screenName as String!
         tempString = "@" + tempString
@@ -147,7 +145,7 @@ class TweetsDetailViewController: UIViewController {
         
         let navController = segue.destination as! UINavigationController
         let vc = navController.topViewController as! ProfileViewController
-        vc.user = User._currentUser
+        vc.tweet = tweets
         print("Inside the segue for profile")
  
     }
